@@ -24,7 +24,7 @@ var defaultOptions = {
   outBaseDir: '',
   host: 'fonts.googleapis.com',
   hostPath: 'css',
-  format: 'woff'
+  format: 'woff2'
 };
 
 var formatData = {
