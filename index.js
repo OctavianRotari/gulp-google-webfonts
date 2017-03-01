@@ -279,7 +279,6 @@ function getter(options) {
         else {
           fontsUrl = options.fontsDir;
         }
-        console.log(fontsUrl);
         request.name = path.posix.join(fontsUrl, request.name);
         return template
           .replace(/\$(\w+)/g, function (m, name) {
