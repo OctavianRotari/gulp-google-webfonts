@@ -257,7 +257,7 @@ function getter(options) {
         '	font-family: \'$family\';',
         '	font-style: $style;',
         '	font-weight: $weight;',
-        '	src: url($name) format(\'' + ext + '\');',
+        '	src: local(\'$path\') format(\'' + ext + '\');',
         '	unicode-range: $range;',
         '}'
       ].join('\n');
@@ -272,14 +272,13 @@ function getter(options) {
       );
 
       function makeFontFace(request) {
-        var fontsUrl;
         if ( options.fontsPath ) {
-          fontsUrl = options.fontsPath;
+          request.path = options.fontsPath;
         }
         else {
-          fontsUrl = options.fontsDir;
+          request.path = options.fontsDir;
         }
-        request.name = path.posix.join(fontsUrl, request.name);
+        request.name = path.posix.join(options.fontsDir, request.name);
         return template
           .replace(/\$(\w+)/g, function (m, name) {
             return request[name];
